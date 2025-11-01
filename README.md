@@ -75,10 +75,6 @@ python app.py
 
 ---
 
-## License
-[MIT License](LICENSE)
-
----
 
 ## Acknowledgments
 
