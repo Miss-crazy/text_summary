@@ -5,7 +5,7 @@ import math
 app = Flask(__name__)
 
 #load summarization pipeline
-summarizer = pipeline("summarization" , model="t5-small", tokenizer="t5-small")
+summarizer = pipeline("summarization" , model="facebook/bart-large-cnn")
 
 #split larhe input paragram into smaller manageable chunks based on a fixed number of words
 def chunk_text(text , max_chunk_len=1000):
@@ -21,12 +21,12 @@ def summarize_large_text(text):
     chunks = chunk_text(text)
     summaries = []
     for chunk in chunks:
-        summary = summarizer(chunk , max_length = 150 , min_length = 40 , do_sample= False)
+        summary = summarizer(chunk , max_length = 300 , min_length = 40 , do_sample= False)
         summaries.append(summary[0]['summary_text'])
     combined_summary = " ".join(summaries)
     #If the combined summary is still very long, it summarizes this combined summary again to shorten it further.
     if len(combined_summary.split()) >1000:
-        combined_summary = summarizer(combined_summary , max_length = 150 , min_length=40,do_sample=False)[0]['summary_text']
+        combined_summary = summarizer(combined_summary , max_length = 300 , min_length=40,do_sample=False)[0]['summary_text']
     return combined_summary
 
 @app.route('/')

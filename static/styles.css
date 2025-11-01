@@ -1,0 +1,133 @@
+/* --- Cotton-candy / matte palette (pastels) --- */
+:root{
+  --cc-rose:   #ffd6e7; /* soft pink */
+  --cc-lilac:  #e9d9ff; /* lilac */
+  --cc-sky:    #d9efff; /* baby blue */
+  --cc-mint:   #dff8ee; /* mint */
+  --cc-cream:  #fff7f0; /* warm off-white */
+  --cc-ink:    #3a2d4d; /* readable dark text */
+  --cc-ink-soft:#564a6a;
+  --cc-accent: #9b7cff; /* muted lavender accent */
+}
+
+/* Abstract matte background (no galaxy) */
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  color: var(--cc-ink);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* layered soft gradients for an abstract cotton-candy feel */
+  background:
+    radial-gradient(1200px 600px at 15% 10%, var(--cc-rose) 0%, transparent 60%),
+    radial-gradient(1000px 500px at 85% 20%, var(--cc-sky) 0%, transparent 60%),
+    radial-gradient(900px 450px at 20% 85%, var(--cc-lilac) 0%, transparent 60%),
+    radial-gradient(800px 400px at 80% 80%, var(--cc-mint) 0%, transparent 60%),
+    linear-gradient(180deg, var(--cc-cream), var(--cc-lilac));
+}
+
+/* Title */
+h2.header {
+  color: var(--cc-ink);
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: none;           /* matte look */
+  margin: 10px 0 20px;
+  letter-spacing: 0.2px;
+}
+
+/* Long, rounded textarea (banner-like but not full width) */
+textarea {
+  width: 85%;
+  max-width: 1200px;
+  height: 350px;
+  padding: 20px;
+  border-radius: 24px;
+  background-color: var(--cc-lilac);
+  border: 1px solid #d3c6ff;
+  box-shadow: 0 4px 18px rgba(59, 32, 128, 0.08) inset; /* soft matte depth */
+  font-size: 20px;
+  color: var(--cc-ink);
+  resize: none;
+  display: block;
+  margin: 25px auto;
+  box-sizing: border-box;
+}
+
+textarea::placeholder{
+  color: var(--cc-ink-soft);
+  opacity: 0.7;
+}
+
+textarea:focus{
+  outline: none;
+  border-color: var(--cc-accent);
+  box-shadow: 0 0 0 3px rgba(155, 124, 255, 0.18) inset;
+}
+
+/* Center the button under the textarea */
+form { text-align: center; width: 100%; }
+
+/* Single, clean button style (centered) */
+input[type="submit"], .btn-back {
+  background-color: var(--cc-accent);
+  color: white;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  margin-top: 22px;
+  box-shadow: 0 6px 18px rgba(155,124,255,0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+input[type="submit"]:hover, .btn-back:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(155,124,255,0.22);
+  background-color: #8d73ff;
+}
+
+input[type="submit"]:active, .btn-back:active {
+  transform: translateY(0);
+}
+
+/* Summary block */
+.summary-container {
+  background: linear-gradient(180deg, var(--cc-cream), var(--cc-sky));
+  width: 90%;
+  max-width: 900px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(58, 45, 77, 0.08);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--cc-ink);
+  margin: 28px auto;
+  white-space: pre-wrap;
+  border: 1px solid rgba(58,45,77,0.08);
+}
+
+/* Links */
+a {
+  color: #6f59d9;              /* soft lavender link */
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+a:hover { color: #8d73ff; text-decoration: underline; }
+
+/* Small responsiveness tweaks */
+@media (max-width: 640px){
+  textarea { width: 92%; height: 320px; font-size: 18px; }
+  .summary-container { width: 94%; font-size: 17px; }
+  h2.header { font-size: 2.1rem; }
+}
+
